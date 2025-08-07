@@ -1,0 +1,424 @@
+#AnimationDropDown
+{
+	min-width: 200px;
+	margin-bottom:1px;
+	margin-left: -1px;
+}
+
+ToolbarMenu
+{
+	margin-bottom: 1px;
+	padding-left: 10px;
+	padding-right: 10px;	
+}
+
+#Toolbar > ToolbarMenu
+{
+	margin-left: -2px;
+}
+
+#Canvas 
+{
+	background-color: #2A2A2A;
+}
+
+#CenterPane
+{
+	width: 100%;
+}
+
+ScrollView
+{
+	margin-top: 0px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+}
+
+#BottomPane 
+{
+	border-top-width: 1px;
+	border-color: #232323;
+	flex-shrink: 0;
+	height: 118px;
+}
+
+#BottomPane > ScrollView 
+{
+	margin-top: 0px;
+}
+
+#BottomPane > ScrollView > * > #unity-content-container
+{
+	flex-direction: row;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+#BottomPane > ScrollView > #unity-content-viewport
+{
+	flex-direction: row;
+}
+
+#Editor
+{
+	position: Absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#Frames
+{
+	overflow: Scroll;
+}
+
+#Frames > #ItemsContainer
+{
+	flex-direction: row;
+	overflow: Visible;
+	flex-shrink: 0;
+}
+
+.frame
+{
+	padding: 4px;
+	height: 72px;
+}
+
+.frame > Image
+{
+	width: 64px;
+	height: 64px;
+	min-height: 64px;
+	min-width: 64px;
+	background-color: #2A2A2A;
+}
+
+#BottomToolbar
+{
+	flex-direction: row;
+	border-bottom-width: 1px;
+	border-color: #232323;
+}
+
+#BottomToolbar>.iconButton
+{
+    margin-top: 1px;
+	margin-bottom: 3px;
+}
+
+#BottomToolbar > .spacer
+{
+	flex-grow: 1;
+}
+
+.layer
+{
+	margin-left: 4px;
+	margin-right: 4px;
+	padding-right: 8px;
+}
+
+.layer > #Preview
+{
+    width: 32px;
+    height: 32px;
+    border-width: 1px;
+    border-color: #666666;
+    margin-right: 8px;
+    background-color: #2A2A2A;
+}
+
+.layer
+{
+    flex-direction: row;
+    height: 40px;
+    align-items: Center;
+    border-color: #313131;
+    border-top-width: 1px;
+}
+
+.layer > Label
+{
+	margin-right: auto;
+	flex-grow: 1;
+}
+
+#Layers
+{
+	border-bottom-width: 1px;
+	border-color: #232323;
+}
+
+#LayersPane > ScrollView
+{
+	margin-top: 0px;	
+}
+
+#LayersToolbar
+{
+	flex-direction: row;
+}
+
+#LayersToolbar > .spacer
+{
+	flex-grow: 1;
+}
+
+#RightPane
+{
+	border-left-width: 1px;
+	border-color: #232323;
+	flex-shrink: 0;
+}
+
+#Preview
+{
+	width: 200px;
+	height: 200px;
+	border-width: 1px;
+    border-color: #666666;
+    background-color: #2A2A2A;
+	margin: auto;
+}
+
+#PreviewPane
+{
+	width: 232px;
+	height: 232px;
+	min-width: 232px;
+	min-height: 232px;
+	border-bottom-width: 1px;
+	border-color: #232323;
+	padding: 16px;
+}
+
+
+#Toolbar
+{
+	height: 26px;
+}
+
+#Toolbox
+{
+	height: 100%;
+	width: 42px;
+	padding: 4px;
+	padding-top: 16px;
+	border-right-width: 1px;
+	border-color: #232323;
+	overflow: visible;
+	flex-shrink: 0;
+}
+
+#Toolbox > ColorField
+{
+    border-color: #BBBBBB;
+    border-width: 1;
+    margin-bottom: 4px;
+    margin-top: 8px;
+    padding: 1px;
+    width:28px;
+}
+
+#TopPane
+{
+	flex-grow: 1;
+}
+
+#VisibleToggle
+{
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+#Workspace
+{
+	margin-top: 24px;
+	flex-direction: row;
+	flex-shrink: 0;
+	flex-grow: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: Absolute;
+}
+
+.iconButton
+{
+	width: 24px;
+	height: 24px;
+	background-color: clear;
+	border-width: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	padding: 4px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.iconButton:hover
+{
+	background-color:#444444;	
+}
+
+.iconButton > .icon:disabled
+{
+	-unity-background-image-tint-color: #808080;
+}
+
+.iconButton.selected
+{
+    background-color:#505050;
+}
+
+.iconButton > .icon
+{
+	width: 16px;
+	height: 16px;
+}
+
+#FramesToolbar
+{
+	flex-direction: row;
+}
+
+#AddLayerButton > .icon { background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/LayerAdd.psd"); }
+#DeleteLayerButton > .icon { background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/Delete.psd"); }
+#AddFrameButton > .icon { background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/LayerAdd.psd"); }
+#DeleteFrameButton > .icon { background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/Delete.psd"); }
+#DuplicateFrameButton > .icon { background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/Duplicate.psd"); }
+#AnimationOptionsButton > .icon { background-image: resource("d_Settings"); }
+#AnimationPlayButton > .icon { background-image: resource("d_PlayButton"); }
+#AnimationPlayButton.selected > .icon { -unity-background-image-tint-color: #22FF22; }
+
+
+.iconToggle
+{
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	border-width: 0px;
+	flex-shrink: 0;
+}
+
+.iconToggle > * > #unity-checkmark
+{
+	width: 16px;
+	height: 16px;
+	margin:auto;
+}
+
+.iconToggle:disabled > * > #unity-checkmark
+{
+	-unity-background-image-tint-color: #808080;
+}
+
+#WorkspaceToolbar
+{
+	flex-direction: row;
+	margin-left: auto;
+}
+
+#WorkspaceToolbar > Image
+{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#WorkspaceToolbar > Slider
+{
+}
+
+#WorkspaceToolbar > .iconToggle
+{
+	margin-right: 2px;
+}
+
+#WorkspaceToolbar > .iconToggle:checked 
+{
+    background-color:#505050;
+}
+
+#ZoomSlider
+{
+	min-width: 80px;
+	width: 80px;
+	margin-right: 8px;
+	margin-top: 4px;
+}
+
+
+#Toolbox > .iconToggle
+{
+	width: 32px;
+	height: 32px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+#Toolbox > .iconToggle > * > #unity-checkmark
+{
+	width: 24px;
+	height: 24px;
+}
+
+#Toolbox > .iconToggle:checked
+{
+    background-color:#505050;
+	border-radius: 3px;	
+}
+
+#SelectionToolToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/SelectionTool.psd");
+}
+
+#PencilToolToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/PencilTool.psd");
+}
+
+#EraserToolToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/EraserTool.psd");
+}
+
+#EyeDropperToolToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/EyeDropperTool.psd");
+}
+
+#BottomPaneToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/FramesToggle.psd");
+}
+
+#LayerPaneToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/LayerToggle.psd");
+}
+
+#GridToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/GridToggle.psd");
+}
+
+#CheckerBoardToggle > * > #unity-checkmark
+{
+	background-image: url("project:///Packages/com.noz.pixelart/Editor Default Resources/images/Grid.psd");
+}
+
+#LayerVisibilityToggle > * > #unity-checkmark
+{
+	background-image: resource("d_scenevis_hidden");
+}
+
+#LayerVisibilityToggle:checked > * > #unity-checkmark
+{
+	background-image: resource("d_scenevis_visible");
+}

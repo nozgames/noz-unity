@@ -1,0 +1,81 @@
+/*
+  NoZ Unity Library
+
+  Copyright(c) 2022 NoZ Games, LLC
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files(the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions :
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+*/
+
+using UnityEngine;
+using NoZ.Tweening.Internals;
+
+namespace NoZ.Tweening
+{
+    public enum Vector2Options : uint
+    {
+        None = 0,
+        IgnoreX = 1 << 0,
+        IgnoreY = 1 << 1,
+    }
+
+    public abstract class Vector2Provider<TTarget> : TweenProvider<TTarget> where TTarget : class
+    {
+        protected internal sealed override Variant Evalulate(Variant from, Variant to, float t, uint options) => Evalulate(from.v2, to.v2, t, (Vector2Options)options);
+        protected internal sealed override Variant GetValue (TTarget target, uint optionsAsUint) => GetValue(target);
+        protected internal sealed override void SetValue (TTarget target, Variant v, uint optionsAsUint)
+        {
+            var options = (Vector2Options)optionsAsUint;
+            if (options != 0)
+            {
+                var old = GetValue(target);
+                if ((options & Vector2Options.IgnoreX) == Vector2Options.IgnoreX) v.v2.x = old.x;
+                if ((options & Vector2Options.IgnoreY) == Vector2Options.IgnoreY) v.v2.y = old.y;
+            }
+            SetValue(target, v);
+        }
+
+        protected virtual Vector2 Evalulate(Vector2 from, Vector2 to, float normalizedTime, Vector2Options options) => 
+            Vector2.LerpUnclamped(from, to, normalizedTime);
+
+        protected abstract Vector2 GetValue (TTarget target);
+        protected abstract void SetValue (TTarget target, Vector2 value);
+    }
+
+    /// <summary>
+    /// Provides support for vector point tweens using a Property or Field.
+    /// </summary>
+    /// <typeparam name="TTarget"></typeparam>
+    public class Vector2MemberProvider<TTarget> : Vector2Provider<TTarget> where TTarget : class
+    {
+        private FastMember<TTarget, Vector2> _member;
+
+        /// <summary>
+        /// Returns a cached member provider for the member with the given <paramref name="memberName"/>.
+        /// </summary>
+        /// <param name="memberName"></param>
+        /// <returns></returns>
+        public static Vector2MemberProvider<TTarget> Get(string memberName) =>
+            ProviderCache<string, Vector2MemberProvider<TTarget>>.Get(memberName);
+
+        private Vector2MemberProvider(string memberName) => _member = new FastMember<TTarget, Vector2>(memberName);
+
+        protected sealed override Vector2 GetValue (TTarget target) => _member.GetValue(target);
+        protected sealed override void SetValue (TTarget target, Vector2 value) => _member.SetValue(target, value);
+    }
+}
